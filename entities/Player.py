@@ -23,9 +23,10 @@ class Player:
             "legs": None,
             "feet": None,
         }
-    
-    def add_item(self, item):
+        
+            def add_item(self, item):
         self.inventory[item] = self.inventory.get(item, 0) + 1
+    
 
     def remove_item(self, item):
         if self.inventory.get(item) is not None:
@@ -57,4 +58,5 @@ class Player:
                 self.level += 1
                 self.xp_to_next_level *= 2
 
-
+    def take_damage(self, damage, we):
+        self.hp -= damage

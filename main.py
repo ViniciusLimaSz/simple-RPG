@@ -1,18 +1,9 @@
-
-# LOCAIS
-map = {
-    "city": {
-        "descricao": "An ancient city.",
-        "saidas": {
-            "north": "forest",
-            "south": "desert"
-            }
-        }
-    }
-
-
-from entities.Enemy import Goblin
+from logic.combat import combat
+from entities.Enemy import Goblin, YoungDragon
 from entities.Player import Player
 
-person = Player()
-enemy = Goblin()
+player = Player()
+inimigo =YoungDragon()
+
+
+combat(player, inimigo)
