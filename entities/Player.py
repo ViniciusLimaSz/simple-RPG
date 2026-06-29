@@ -1,21 +1,21 @@
-
-class Player:
+from data.attacks import attacks
+from data.weapons import weapons
+class player:
     def __init__(self):
         self.hp = 100
         self.max_hp = 100
-        self.mana = 50
-        self.max_mana = 50
-        self.strength = 10
-        self.intelligence = 10
-        self.agility = 10
-        
+        self.mana = 100
+        self.max_mana = 100
+        self.strength = 5
+        self.intelligence = 5
+        self.agility = 5
         self.level = 1
         self.max_level = 10
         self.xp = 0
         self.xp_to_next_level = 100
         self.inventory = {}
         self.equipment = {
-            "weapons": None,
+            "weapon": None,
             "shield": None,
             "head": None,
             "chest": None,
@@ -23,25 +23,30 @@ class Player:
             "legs": None,
             "feet": None,
         }
+        self.attacks = []
         
-            def add_item(self, item):
+    def add_item(self, item):
         self.inventory[item] = self.inventory.get(item, 0) + 1
     
-
     def remove_item(self, item):
         if self.inventory.get(item) is not None:
             self.inventory[item] -= 1
         if self.inventory.get(item) == 0:
             del self.inventory[item]
 
-    def equip_item(self, slot, item):
+    def equip_item(self, item):
+        slot = weapons[item]["equip_type"]
         if self.inventory.get(item, 0) > 0 and self.equipment.get(slot) is None:
             self.equipment[slot] = item
-            self.remove_item()
+            self.remove_item(item)
+            for attacks in item["attacks"]:
+                self.attacks.append(attacks)
         elif self.inventory[item] > 0 and self.equipment.get(slot) is not None:
             self.inventory[self.equipment[slot]] = self.inventory.get(self.equipment[slot], 0) + 1
             self.equipment[slot] = item
-            self.remove_item()
+            self.remove_item(item)
+            for attacks in item["attacks"]:
+                self.attacks.append(attacks)
         return
 
     def unequip_item(self, slot):
@@ -58,5 +63,5 @@ class Player:
                 self.level += 1
                 self.xp_to_next_level *= 2
 
-    def take_damage(self, damage, we):
+    def take_damage(self, damage):
         self.hp -= damage

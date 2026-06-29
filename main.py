@@ -1,9 +1,11 @@
-from logic.combat import combat
-from entities.Enemy import Goblin, YoungDragon
-from entities.Player import Player
+from data import weapons
 
-player = Player()
-inimigo =YoungDragon()
+from entities.Enemy import goblin, young_dragon,ancient_red_dragon
+from entities.Player import player
 
+pl = player()
 
-combat(player, inimigo)
+pl.add_item("iron_sword")
+pl.equip_item("iron_sword")
+
+print(pl.equipment)

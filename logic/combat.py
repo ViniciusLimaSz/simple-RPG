@@ -18,8 +18,9 @@ def combat(player, inimigo):
             contador_de_turno += 1
 
             if atacar_ou_inventario == 1:
-                
-                    
-      
+
     else:
         print("Fugiu")
+
+def calculate_damage(self):
+    damage =

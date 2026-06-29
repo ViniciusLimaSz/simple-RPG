@@ -1,14 +1,10 @@
 weapons = {
-    "swords": {
-        "steel_sword": {
-            "dano": 20,
-            "nome": "Espada de Aço Puro",
-            "tipo_dano": ["cortante", "perfurante"]
-        },
-        "iron_sword": {
-            "dano": 10,
-            "nome": "Espada de Ferro",
-            "tipo_dano": ["cortante", "perfurante"]
-        }
-    },
+    "iron_sword": {
+        "equip_type": "weapon",
+        "category": "sword",
+        "name": "Espada de Ferro",
+        "cost": 10,
+        "base_damage": 10,
+        "attacks": ["basic_attack", "rotary_cut", "front_lunge"]
+    }
 }
