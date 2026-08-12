@@ -1,0 +1,69 @@
+OBJETIVO:
+Um rpg que rode no terminal
+sempre apresentar opções de troca de cenário
+Linguagem: Python + bibliotecas
+NPCS:
+nada além de inventários
+JOGADOR:
+vida, mana, força, inteligência, agilidade, leveis, inventário, equipamentos, ouro
+FUNÇÕES DE CLASSE PLAYER:
+adicionar / remover item do inventario
+equipar / desequipar item do inventario
+ganhar xp
+subir de nível
+tomar dano
+calcular dano próprio
+INIMIGOS:
+vida, mana, força, inteligência, agilidade, leveis, xp para dar, inventário (pode ter ou não)
+FUNÇÕES DE CLASSE:
+tomar dano
+calcular dano próprio
+COMBATE:
+
+```
+armas
+armaduras
+habilidades / ataques
+poções
+itens 
+
+```
+
+LOOP principal:
+compara agilidade player x inimigo
+se player > inimigo = player começa
+se inimigo > player = inimigo começa
+após isto:
+loop começa
+player escolhe entre (atacar (ataque físico ou habilidades especificas) ou defender (reduz o dano em % + resistências do player) ou itens (poções etc) ou fugir(% a depender do nível do inimigo))
+após isto:
+inimigo ataca ou defender (% + resistências) ou (caso possua: usa item)
+loop so acaba com algum morrendo ou player fugindo
+ITENS:
+ARMAS
+tipo de equipamento (para a função saber o slot), categoria ("espada", "arco", etc, para fácil manutenções), nome, custo, dano base, ataques ("skills")
+ARMADURAS
+tipo de equipamento (head, chest, arms, legs, feet), categoria (helmet, chestplate, bracers, greaves, boots), base_defense, name, resistances
+POÇÕES:
+Cura, veneno etc
+TROCA DE CENÁRIOS:
+ENTRADA DA CIDADE: Floresta - praça da cidade
+Praça da cidade: entrada - guilda - armeiro Torv
+Guilda: praça da cidade
+armeiro: praça
+Floresta: Entrada da cidade
+NPCS:
+Armeiro Torv: vende equipamentos ao player
+inventário: varias armas e armaduras com bloqueio de nível para não permitir acesso a armas muito fortes de começo
+Balconista Elia: oferece missões e faz pagamentos ao player
+inventário: none
+PRIMEIRA QUEST:
+começando na entrada da cidade
+primeira missão: ir até a guilda passando pela praça da cidade
+pegar a primeira missão com o balconista
+ir a floresta
+procurar e matar um goblin
+voltar
+ir a guilda pegar o pagamento
+fim da missão 1.
+REQUISITOS: rodar sem erro
