@@ -2,13 +2,13 @@ from data.attacks import attacks
 from data.weapons import weapons
 class player:
     def __init__(self):
-        self.hp = 100
+        self.hp = 10
         self.max_hp = 100
         self.mana = 100
         self.max_mana = 100
-        self.strength = 5
-        self.intelligence = 5
-        self.agility = 5
+        self.strength = 10
+        self.intelligence = 10
+        self.agility = 10
         self.level = 1
         self.max_level = 10
         self.xp = 0
@@ -24,6 +24,7 @@ class player:
             "feet": None,
         }
         self.attacks = []
+        self.gold = 100
         
     def add_item(self, item):
         self.inventory[item] = self.inventory.get(item, 0) + 1
