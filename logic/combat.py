@@ -1,7 +1,5 @@
 import time as t
 
-player = player()
-
 def batle_menu():
     batle_menu_choices = input("1 - Atacar\n2 - Inventário\n3 - Fugir\n")
     if batle_menu_choices == "1":
