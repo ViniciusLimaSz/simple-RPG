@@ -8,6 +8,11 @@ import random
 from entities.Player import player
 from logic.combat import combat_display
 
+def efeito_digitar(palavra):
+    for n in palavra:
+        print(n, end="", flush=True)
+        time.sleep(0.2)
+
 def clear_scream():
     os.system('cls' if os.name == 'nt' else 'clear')
 
@@ -133,4 +138,6 @@ def MENU_JOGO():
         sys.exit()
     else:
         print("Inválido")
-        
+
+
+

@@ -1,3 +1,4 @@
+from data.items import items
 import time
 
 def efeito_digitar(palavra):

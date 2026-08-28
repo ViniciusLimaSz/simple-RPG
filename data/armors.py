@@ -16,7 +16,7 @@ armor = {
     "iron_bracers": {
         "equip_type": "arms",
         "category": "bracers",
-        "base_defense": 10,
+        "base_defense": 10,                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      
         "name": "Braçadeiras de Ferro",
         "resistance": 0.10
         },

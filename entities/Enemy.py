@@ -17,7 +17,7 @@ class enemy:
 
 class goblin(enemy):
     def __init__(self):
-        super().__init__(name="\033[0;32mGoblin\033[m",hp =30, max_hp=30, mana=0, max_mana=0, strength=2, intelligence=1, agility= 5, resistence = 0, level=1, xp_reward= 15)
+        super().__init__(name="\033[0;32mGoblin\033[m",hp =30, max_hp=30, mana=0, max_mana=0, strength=2, intelligence=1, agility= 5, resistence = 0.2, level=1, xp_reward= 15)
 
 class young_dragon(enemy):
     def __init__(self):
@@ -25,9 +25,12 @@ class young_dragon(enemy):
 
 class ancient_red_dragon(enemy):
 	def __init__(self):
-		super().__init__(name="\033[0;31mDragão Vermelho Ancião\033[m", hp=10000, max_hp=10000,mana =10000, max_mana=10000, strength=100, intelligence=100, agility= 10, resistence=50, level=20, xp_reward= 10000)
+		super().__init__(name="\033[0;31mDragão Vermelho Ancião\033[m", hp=10000, max_hp=10000,mana =10000, max_mana=10000, strength=100, intelligence=100, agility= 10, resistence=0.5, level=20, xp_reward= 10000)
 
 class skeleton(enemy):
     def __init__(self):
         super().__init__(name="\033[0;34mSkeleton\033[m",hp =30, max_hp=30, mana=0, max_mana=0, strength=2, intelligence=1, agility= 5, resistence = 0, level=1, xp_reward= 15)
 		
+def take_damage(self, damage):
+        damage_from_player = damage * (1 - self.resistance)
+        self.hp -= damage_from_player

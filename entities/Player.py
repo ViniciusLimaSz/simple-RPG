@@ -24,7 +24,7 @@ class player:
             "legs": None,
             "feet": None,
         }
-        self.attacks = []
+        self.list_attacks = []
         self.gold = 100
         self.local = "CIDADE"
         self.first_misson = True
@@ -35,28 +35,27 @@ class player:
     
     def remove_item(self, item, quantidade_remover):
         if quantidade_remover > self.inventory.get(item, 0):
-            print("Digite um valor válido  igual ou menor ao que possui!")
+            print("Digite um valor válido igual ou menor ao que possui!")
         if quantidade_remover <= self.inventory.get(item, 0):
-                self.inventory[item] -= quantidade_remover
-                if self.inventory.get(item, 0) <= 0:
-                    del self.inventory[item]
+            self.inventory[item] -= quantidade_remover
+            if self.inventory.get(item, 0) <= 0:
+                del self.inventory[item]
 
     def equip_item(self, item):
         slot = items[item]["equip_type"]
-        if self.inventory.get(item, 0) > 0 and self.equipment.get(slot) is None:
+        if self.equipment.get(slot) is not None:
+            item_antigo = self.equipment[slot]
+            self.inventory[item_antigo] = self.inventory.get(item_antigo, 0) + 1
+            if items[item_antigo]["equip_type"] == "weapon":
+                for attack in items[item_antigo]["attacks"]:
+                    self.list_attacks.remove(attack)
+        if self.inventory.get(item, 0) > 0:
             self.equipment[slot] = item
-            self.remove_item(item)
+            self.remove_item(item, 1)
             if items[item]["equip_type"] == "weapon":
                 for attack in items[item]["attacks"]:
-                    self.attacks.append(attack)
-        elif self.inventory.get(item, 0) > 0 and self.equipment.get(slot) is not None:
-            self.inventory[self.equipment[slot]] = self.inventory.get(self.equipment[slot], 0) + 1
-            self.equipment[slot] = item
-            self.remove_item(item)
-            if items[item]["equip_type"] == "weapon":
-                for attack in items[item]["attacks"]:
-                    self.attacks.append(attack)
-        return
+                    self.lis_attacks.append(attack)
+
 
     def unequip_item(self, slot):
         item = self.equipment.get(slot)
