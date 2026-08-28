@@ -1,4 +1,4 @@
 from data.weapons import weapons
-from data.armors import armors
+from data.armors import armor
 
-items = {**weapons, **armors}
+items = {**weapons, **armor}

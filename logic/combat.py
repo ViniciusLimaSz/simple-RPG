@@ -1,30 +1,30 @@
+import time
 
-def combat(player, enemy):
-    contador_de_turno = 1
-    print(f"Um \033[1;32m{enemy.name}\033[m apareceu!\n")
-    batalhar_ou_Fugir = int(input(
-        "1 - Batalhar\n"
-        "2 - Fugir\n"
-        "\n"
-        ""))
-    if batalhar_ou_Fugir == 1:
-        while True:
-            print(f"==== \033[1;33mTURNO {contador_de_turno}\033[m ====\n"
-            f"{enemy.hp}      {player.hp}")
-            atacar_ou_inventario = int(input("\n"
-            "1 - ATACAR\n"
-            "2 - INVENTÁRIO\n"
-            "\n"
-            ""))
-            contador_de_turno += 1
-
-            if atacar_ou_inventario == 1:
-                
-                if player.hp <= 0 or enemy.hp <= 0:
-                    break
-
+def batle_menu():
+    batle_menu_choices = input("1 - Atacar\n2 - Inventário\n3 - Fugir\n")
+    if batle_menu_choices == "1":
+        return
+    elif batle_menu_choices == "2":
+        return
+    elif batle_menu_choices == "3":
+        print("Player Fugiu!")
+        time.sleep(2)
     else:
-        print("Fugiu")
+        "Digite algo válido"
 
-def calculate_damage(self):
-    return
+def combat_display(player, enemy):
+    contador_de_turno = 1
+    print(f"UM {enemy.name} APARECEU!\n")
+    time.sleep(1.5)
+    while True:
+        print(f"= = = = \033[1;33mTURNO {contador_de_turno}\033[m = = = =\n" f"    {enemy.hp}  X  {player.hp}\n")
+        batle_menu()
+        contador_de_turno += 1
+        
+from entities.Player import player
+from entities.Enemy import goblin
+
+j = player()
+e = goblin()
+
+combat_display(j, e)
