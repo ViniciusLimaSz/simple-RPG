@@ -148,7 +148,7 @@ def gunsmith_choices(player):
         if escolha_armeiro == "1":
             clear_scream()
             Torv_chat(player)
-            time.sleep(3)
+            time.sleep(2)
             clear_scream()
             break
 
