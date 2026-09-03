@@ -3,6 +3,7 @@ from data.attacks import attacks
 
 class player:
     def __init__(self):
+        self.name = None
         self.hp = 100
         self.max_hp = 100
         self.mana = 100
@@ -29,6 +30,8 @@ class player:
         self.local = "CIDADE"
         self.first_misson = True
         self.guild_first_misson = None
+        self.guild_first_misson_completed = False
+        self.first_Torv_chat = True
         
     def add_item(self, item):
         self.inventory[item] = self.inventory.get(item, 0) + 1
@@ -36,26 +39,31 @@ class player:
     def remove_item(self, item, quantidade_remover):
         if quantidade_remover > self.inventory.get(item, 0):
             print("Digite um valor válido igual ou menor ao que possui!")
+            return False
         if quantidade_remover <= self.inventory.get(item, 0):
             self.inventory[item] -= quantidade_remover
             if self.inventory.get(item, 0) <= 0:
                 del self.inventory[item]
+            return True
+        return False
 
     def equip_item(self, item):
         slot = items[item]["equip_type"]
+        if not self.remove_item(item, 1):
+            return False
+
         if self.equipment.get(slot) is not None:
             item_antigo = self.equipment[slot]
             self.inventory[item_antigo] = self.inventory.get(item_antigo, 0) + 1
             if items[item_antigo]["equip_type"] == "weapon":
                 for attack in items[item_antigo]["attacks"]:
                     self.list_attacks.remove(attack)
-        if self.inventory.get(item, 0) > 0:
-            self.equipment[slot] = item
-            self.remove_item(item, 1)
-            if items[item]["equip_type"] == "weapon":
-                for attack in items[item]["attacks"]:
-                    self.lis_attacks.append(attack)
 
+        self.equipment[slot] = item
+        if items[item]["equip_type"] == "weapon":
+            for attack in items[item]["attacks"]:
+                self.list_attacks.append(attack)
+        return True
 
     def unequip_item(self, slot):
         item = self.equipment.get(slot)
@@ -64,8 +72,7 @@ class player:
             self.equipment[slot] = None
             if items[item]["equip_type"] == "weapon":
                 for attack in items[item]["attacks"]:
-                    self.attacks.remove(attack)
-
+                    self.list_attacks.remove(attack)
 
     def xp_gain(self, valor):
         self.xp += valor
@@ -76,17 +83,16 @@ class player:
                 self.level += 1
                 self.xp_to_next_level *= 2
 
-    def take_damage(self, damage):
+    def take_damage(self, enemy_damage):
         resistencia_total = 0
-        for slot in ["head", "chest", "arms", "legs", "feet"]:
-            item = self.equipment.get(slot)
+        for nome_slot in ["head", "chest", "arms", "legs", "feet"]:
+            item = self.equipment.get(nome_slot)
             if item is not None:
                 resistencia_total += items[item]["resistance"]
-        dano_final = damage * (1 - resistencia_total)
+        dano_final = enemy_damage * (1 - resistencia_total)
         self.hp -= dano_final
 
-
-    def calculate_damage(self, slot, ataque):
-        item = self.equipment.get(slot)
-        damage = (self.strength + items[item]["base_damage"]) * attacks[ataque]["multiplier"]
-        return damage
+    def calculate_damage(self, ataque_do_player):
+        item = self.equipment.get("weapon")
+        player_damage = (self.strength + items[item]["base_damage"]) * attacks[ataque_do_player]["multiplier"]
+        return player_damage

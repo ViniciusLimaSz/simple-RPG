@@ -4,6 +4,7 @@ armor = {
         "category": "helmet",
         "base_defense": 10,
         "name": "Capacete de Ferro",
+        "cost": 20,
         "resistance": 0.10
     },
     "iron_chestplate": {
@@ -11,13 +12,15 @@ armor = {
         "category": "chestplate",
         "base_defense": 10,
         "name": "Armadura de Ferro",
+        "cost": 35,
         "resistance": 0.15
         },
     "iron_bracers": {
         "equip_type": "arms",
         "category": "bracers",
-        "base_defense": 10,                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      
+        "base_defense": 10,
         "name": "Braçadeiras de Ferro",
+        "cost": 15,
         "resistance": 0.10
         },
     "iron_greaves": {
@@ -25,6 +28,7 @@ armor = {
         "category": "greaves",
         "base_defense": 10,
         "name": "Grevas de Ferro",
+        "cost": 18,
         "resistance": 0.10
         },
     "iron_boots": {
@@ -32,6 +36,7 @@ armor = {
         "category": "boots",
         "base_defense": 10,
         "name": "Botas de Ferro",
+        "cost": 12,
         "resistance": 0.05
         }
 }

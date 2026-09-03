@@ -36,9 +36,20 @@ print(f"{lista[item_celecionado]["name"]}")
 
 def seleção_inventario_batle(player):
     for position, item in enumerate(player.inventory, start=1):
-        print(position, f"{player.inventory[item]["name"]}: {player.inventory[item]["quantidade"]}", flush=True)
+        item_info = player.inventory[item]
+
+        print(
+            position,
+            f'{item_info["name"]}: {item_info["quantidade"]}',
+            flush=True
+        )
+
         time.sleep(0.2)
-    chave = list(player.inventory.keys())
-    seleção_item = int(input(""))
-    item_celecionado = chave[seleção_item - 1]
-    print(f"{player.inventory[item_celecionado]["name"]}")
+
+    chaves = list(player.inventory.keys())
+
+    seleção_item = int(input("Selecione um item: "))
+
+    item_selecionado = chaves[seleção_item - 1]
+
+    print(player.inventory[item_selecionado]["name"])
